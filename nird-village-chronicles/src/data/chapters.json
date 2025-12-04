@@ -1,0 +1,35 @@
+{
+  "chapters": [
+    {
+      "id": 1,
+      "title": "Le Réveil du Village",
+      "description": "Windows 10 vient de prendre fin. Que faire ?",
+      "scenes": [
+        {
+          "id": "1-1",
+          "background": "school-office",
+          "character": "directeur",
+          "dialogue": "C'est la catastrophe ! Microsoft vient d'annoncer la fin du support de Windows 10. Tous nos ordinateurs sont concernés...",
+          "choices": [
+            {
+              "text": "Acheter des nouvelles licences Windows 11",
+              "next": "1-2a",
+              "effects": { "budget": -5000, "dependency": +10 }
+            },
+            {
+              "text": "Explorer des alternatives libres",
+              "next": "1-2b",
+              "effects": { "budget": 0, "dependency": -5, "xp": 50 }
+            },
+            {
+              "text": "Demander conseil à la communauté NIRD",
+              "next": "1-2c",
+              "effects": { "xp": 100 },
+              "unlocks": "library"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
