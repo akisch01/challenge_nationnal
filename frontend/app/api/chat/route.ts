@@ -16,7 +16,7 @@ export async function POST(req: Request) {
   }
 
   try {
-    const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
+    const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash-lite" });
 
     const chat = model.startChat({
       history: [
@@ -30,7 +30,7 @@ export async function POST(req: Request) {
         },
       ],
       generationConfig: {
-        maxOutputTokens: 200,
+        maxOutputTokens: 100,
       },
     });
 
