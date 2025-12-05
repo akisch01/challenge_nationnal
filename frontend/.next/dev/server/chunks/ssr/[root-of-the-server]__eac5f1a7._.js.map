@@ -1,6 +1,0 @@
-{
-  "version": 3,
-  "sources": [],
-  "sections": [
-    {"offset": {"line": 14, "column": 0}, "map": {"version":3,"sources":["file:///home/eben/Bureau/NuitDelInfo/challenge_nationnal/frontend/app/pitch/page.tsx"],"sourcesContent":["export default function PitchPage() {\n  return (\n    <div className=\"dev-page\">\n      <div className=\"dev-content\">\n        <div className=\"dev-icon\">🚧</div>\n        <h1 className=\"dev-title\">En cours de développement</h1>\n        <p className=\"dev-subtitle\">Cette section sera bientôt disponible !</p>\n      </div>\n    </div>\n  )\n}\n"],"names":[],"mappings":";;;;;;AAAe,SAAS;IACtB,qBACE,8OAAC;QAAI,WAAU;kBACb,cAAA,8OAAC;YAAI,WAAU;;8BACb,8OAAC;oBAAI,WAAU;8BAAW;;;;;;8BAC1B,8OAAC;oBAAG,WAAU;8BAAY;;;;;;8BAC1B,8OAAC;oBAAE,WAAU;8BAAe;;;;;;;;;;;;;;;;;AAIpC"}}]
-}
