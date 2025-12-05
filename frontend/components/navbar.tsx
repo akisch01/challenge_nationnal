@@ -11,6 +11,7 @@ const NAV_ITEMS = [
   { href: "/femmes-numerique", label: "Les Femmes dans le Numérique" },
   { href: "/carte-talents", label: "La carte des Talents" },
   { href: "/mini-mind", label: "Mini Mind" },
+  { href: "/chatbruti", label: "Chat'bruti" },
 ]
 
 export function Navbar() {
