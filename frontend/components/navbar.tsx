@@ -10,7 +10,7 @@ const NAV_ITEMS = [
   { href: "/pitch", label: "Pitch" },
   { href: "/femmes-numerique", label: "Les Femmes dans le Numérique" },
   { href: "/carte-talents", label: "La carte des Talents" },
-  { href: "/mini-mind", label: "Mini Mind" },
+  { href: "https://minimind-weimak-jiwu.onrender.com/", label: "Mini Mind" },
   { href: "/chatbruti", label: "Chat'bruti" },
 ]
 
@@ -36,16 +36,30 @@ export function Navbar() {
         </button>
 
         <ul className={`navbar-menu ${isMenuOpen ? "navbar-menu-mobile-open" : ""}`}>
-          {NAV_ITEMS.map((item) => (
-            <li key={item.href}>
-              <Link
-                href={item.href}
-                className={`navbar-link ${pathname === item.href ? "navbar-link-active" : ""}`}
-              >
-                {item.label}
-              </Link>
-            </li>
-          ))}
+          {NAV_ITEMS.map((item) => {
+            const isExternal = item.href.startsWith("http");
+            return (
+              <li key={item.href}>
+                {isExternal ? (
+                  <a
+                    href={item.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="navbar-link"
+                  >
+                    {item.label}
+                  </a>
+                ) : (
+                  <Link
+                    href={item.href}
+                    className={`navbar-link ${pathname === item.href ? "navbar-link-active" : ""}`}
+                  >
+                    {item.label}
+                  </Link>
+                )}
+              </li>
+            );
+          })}
         </ul>
       </div>
     </nav>
