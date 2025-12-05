@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import { Typewriter } from "@/components/chat/typewriter";
 
 type Message = {
   sender: "user" | "bot";
@@ -72,7 +73,7 @@ export default function ChatbrutiPage() {
               msg.sender === "user" ? "user-message" : "bot-message"
             }`}
           >
-            <p>{msg.text}</p>
+            {msg.sender === 'bot' ? <Typewriter text={msg.text} /> : <p>{msg.text}</p>}
           </div>
         ))}
         {isLoading && (
