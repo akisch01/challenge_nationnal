@@ -1,0 +1,50 @@
+# Dockerfile à la racine pour Render
+# Ce fichier construit l'application Next.js depuis le dossier frontend
+FROM node:20-alpine AS deps
+RUN apk add --no-cache libc6-compat
+WORKDIR /app
+
+# Copier les fichiers de dépendances du frontend
+COPY frontend/package.json frontend/package-lock.json* ./
+
+# Installer les dépendances
+RUN if [ -f package-lock.json ]; then npm ci; else npm install; fi
+
+# Stage 2: Builder
+FROM node:20-alpine AS builder
+WORKDIR /app
+COPY --from=deps /app/node_modules ./node_modules
+COPY frontend/ ./
+
+# Variables d'environnement pour le build
+ENV NEXT_TELEMETRY_DISABLED=1
+
+# Build de l'application Next.js
+RUN npm run build
+
+# Stage 3: Runner
+FROM node:20-alpine AS runner
+WORKDIR /app
+
+ENV NODE_ENV=production
+ENV NEXT_TELEMETRY_DISABLED=1
+
+RUN addgroup --system --gid 1001 nodejs
+RUN adduser --system --uid 1001 nextjs
+
+# Copier les fichiers nécessaires depuis le builder
+COPY --from=builder /app/public ./public
+COPY --from=builder /app/package.json ./package.json
+
+# Copier les node_modules de production et les fichiers de build
+COPY --from=builder /app/node_modules ./node_modules
+COPY --from=builder --chown=nextjs:nodejs /app/.next ./.next
+
+USER nextjs
+
+EXPOSE 3000
+
+ENV PORT=3000
+ENV HOSTNAME="0.0.0.0"
+
+CMD ["npm", "start"]
