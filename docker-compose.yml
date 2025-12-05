@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - GEMINI_API_KEY=${GEMINI_API_KEY}
+      - PORT=3000
+      - HOSTNAME=0.0.0.0
+    volumes:
+      # Pour le développement, vous pouvez monter le code source
+      # - ./frontend:/app
+      # - /app/node_modules
+      # - /app/.next
+    restart: unless-stopped
+

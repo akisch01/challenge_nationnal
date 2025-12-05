@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: challenge-nationnal
+    env: docker
+    dockerfilePath: ./frontend/Dockerfile
+    dockerContext: ./frontend
+    plan: free
+    region: frankfurt
+    buildCommand: ""
+    startCommand: ""
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: GEMINI_API_KEY
+        sync: false
+    healthCheckPath: /
+    numInstances: 1
+
