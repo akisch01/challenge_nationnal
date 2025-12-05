@@ -1,0 +1,22 @@
+{
+  "app": {
+    "[project]/app/carte-talents/page": [
+      "static/media/5d52bd6c4cb3f315-s.p.610fd2a3.woff2"
+    ],
+    "[project]/app/femmes-numerique/page": [
+      "static/media/5d52bd6c4cb3f315-s.p.610fd2a3.woff2"
+    ],
+    "[project]/app/mini-mind/page": [
+      "static/media/5d52bd6c4cb3f315-s.p.610fd2a3.woff2"
+    ],
+    "[project]/app/page": [
+      "static/media/5d52bd6c4cb3f315-s.p.610fd2a3.woff2"
+    ],
+    "[project]/app/pitch/page": [
+      "static/media/5d52bd6c4cb3f315-s.p.610fd2a3.woff2"
+    ]
+  },
+  "appUsingSizeAdjust": true,
+  "pages": {},
+  "pagesUsingSizeAdjust": false
+}

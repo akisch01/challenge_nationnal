@@ -1,7 +1,15 @@
 import type React from "react"
 import type { Metadata, Viewport } from "next"
 import { Analytics } from "@vercel/analytics/next"
+import { Fredoka } from "next/font/google"
+import { Navbar } from "@/components/navbar"
 import "./globals.css"
+
+const fredoka = Fredoka({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-fredoka",
+})
 
 // <CHANGE> Updated metadata for the game
 export const metadata: Metadata = {
@@ -37,8 +45,9 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="fr">
+    <html lang="fr" className={fredoka.variable}>
       <body className="font-sans antialiased">
+        <Navbar />
         {children}
         <Analytics />
       </body>
