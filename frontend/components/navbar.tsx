@@ -1,5 +1,7 @@
 "use client"
 
+import { useState } from "react"
+import Image from "next/image"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 
@@ -13,16 +15,26 @@ const NAV_ITEMS = [
 
 export function Navbar() {
   const pathname = usePathname()
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   return (
     <nav className="navbar">
       <div className="navbar-container">
         <div className="navbar-logo">
-          <span className="navbar-logo-emoji">🛡️</span>
-          <span className="navbar-logo-text">N.I.R.D.</span>
+          <Image src="/logo.png" alt="WEIMAK Logo" width={50} height={20} />
         </div>
 
-        <ul className="navbar-menu">
+        <button
+          className="navbar-burger"
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          aria-label="menu"
+        >
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </button>
+
+        <ul className={`navbar-menu ${isMenuOpen ? "navbar-menu-mobile-open" : ""}`}>
           {NAV_ITEMS.map((item) => (
             <li key={item.href}>
               <Link
