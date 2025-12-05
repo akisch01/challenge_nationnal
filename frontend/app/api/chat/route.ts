@@ -1,9 +1,13 @@
 import { GoogleGenerativeAI } from "@google/generative-ai";
 
 // IMPORTANT: Store your API key in an environment variable
-const API_KEY = process.env.GEMINI_API_KEY as string;
+const API_KEY = process.env.GEMINI_API_KEY;
 
-const genAI = new GoogleGenerativeAI(API_KEY);
+if (!API_KEY) {
+  console.error("❌ GEMINI_API_KEY is not set in environment variables");
+}
+
+const genAI = API_KEY ? new GoogleGenerativeAI(API_KEY) : null;
 
 export async function POST(req: Request) {
   const { message } = await req.json();
@@ -13,6 +17,20 @@ export async function POST(req: Request) {
       status: 400,
       headers: { "Content-Type": "application/json" },
     });
+  }
+
+  // Vérifier que la clé API est configurée
+  if (!API_KEY || !genAI) {
+    console.error("GEMINI_API_KEY environment variable is missing or invalid");
+    return new Response(
+      JSON.stringify({ 
+        error: "API key not configured. Please set GEMINI_API_KEY environment variable." 
+      }),
+      {
+        status: 500,
+        headers: { "Content-Type": "application/json" },
+      }
+    );
   }
 
   try {

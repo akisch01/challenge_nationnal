@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: challenge-nationnal
+    env: docker
+    plan: free
+    region: frankfurt
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: GEMINI_API_KEY
+        sync: false
+    healthCheckPath: /
+    numInstances: 1
+
+
+
