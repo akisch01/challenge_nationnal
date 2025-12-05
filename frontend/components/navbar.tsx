@@ -9,7 +9,7 @@ const NAV_ITEMS = [
   { href: "/", label: "Accueil" },
   { href: "/pitch", label: "Pitch" },
   { href: "/femmes-numerique", label: "Les Femmes dans le Numérique" },
-  { href: "/carte-talents", label: "La carte des Talents" },
+  { href: "https://carte-des-talents-weimak.onrender.com", label: "La carte des Talents" },
   { href: "https://minimind-weimak-jiwu.onrender.com/", label: "Mini Mind" },
   { href: "/chatbruti", label: "Chat'bruti" },
 ]
